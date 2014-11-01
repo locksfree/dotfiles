@@ -75,12 +75,18 @@ call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim' " required, let vundle self-manage
 
-source vundles/utils.vim
-source vundles/completion.vim
-source vundles/git.vim
-source vundles/tagging.vim
-source vundles/vimextensions.vim
-source vundles/dev.vim
+if !exists("*DotSource")
+   function DotSource(name)
+     exec 'source'.resolve(resolve(expand('$MYVIMRC'))[:-10].'/vundles/'.a:name.'.vim')
+   endfunction
+endif
+
+call DotSource('utils')
+call DotSource('completion')
+call DotSource('git')
+call DotSource('tagging')
+call DotSource('vimextensions')
+call DotSource('dev')
 
 Plugin 'altercation/vim-colors-solarized'       " solarized theme
 
