@@ -60,6 +60,9 @@ set novisualbell
 set t_vb=
 set tm=500
 
+" Key bindings {{{1
+let mapleader = ","
+
 " VUNDLE CONFIGURATION {{{1
 " =================================
 filetype off
@@ -135,9 +138,6 @@ augroup vimconfig
 augroup END
 
 syntax enable      " enable syntax highlighting
-
-" Key bindings {{{1
-let mapleader = ","
 
 " CTRL-U in insert mode deletes a lot.  Use CTRL-G u to first break undo,
 " so that you can undo CTRL-U after inserting a line break.
