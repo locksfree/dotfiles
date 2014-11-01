@@ -155,6 +155,16 @@ vmap <M-up> :m'<-2<cr>`>my`<mzgv`yo`z
 " no highlight
 nmap <leader>h :noh<cr>
 
+" Fold toggle by pressing F9. Create new fold on manual mode too.
+inoremap <F9> <C-O>za
+nnoremap <F9> za
+onoremap <F9> <C-C>za
+vnoremap <F9> zf
+
+" Have space as a fold opener in normal mode
+nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<CR>
+vnoremap <Space> zf
+
 let &errorformat="%f:%l:%c: %t%*[^:]:%m,%f:%l: %t%*[^:]:%m," . &errorformat 
 
 " Quick docco-husky
