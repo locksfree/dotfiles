@@ -1,3 +1,6 @@
+" == DEVELOPMENT RELATED PLUGINS ==
+" =================================
+
 Plugin 'DirDiff.vim'                            " Recursive directory diffing
 Plugin 'chrisbra/Recover.vim'                   " Show a diff on recovered buffers
 Plugin 'DoxygenToolkit.vim'                     " Doxygen
@@ -22,21 +25,35 @@ Plugin 'mustache/vim-mustache-handlebars'       " Support for Handlebars
 Plugin 'wavded/vim-stylus'                      " Syntax highlighting for stylus
 Plugin 'cespare/vim-toml'                       " Syntax highlighting for Toml configuration file format
 
-" JS & Coffee script settings
-au BufNewFile,BufReadPost *.js setl shiftwidth=3 tabstop=3 expandtab
-" Coffee-script: Recompile on save and show errors
-au BufNewFile,BufReadPost *.js setl shiftwidth=3 expandtab
-" On ,m, save all and run spec folder with jasmine
-map <leader>m :wa \|! jasmine-node spec --coffee --noColor <CR>
-
 "Delete trailing white space
 func! DeleteTrailingWS()
   exe "normal mz"
   %s/\s\+$//ge
   exe "normal `z"
 endfunc
-autocmd BufWrite *.py :call DeleteTrailingWS()
-autocmd BufWrite *.js :call DeleteTrailingWS()
+
+" JS & Coffee script settings
+augroup devgrp
+   autocmd!
+
+   au BufNewFile,BufReadPost *.js setl shiftwidth=3 tabstop=3 expandtab
+   " Coffee-script: Recompile on save and show errors
+   au BufNewFile,BufReadPost *.js setl shiftwidth=3 expandtab
+
+   autocmd BufWrite *.py :call DeleteTrailingWS()
+   autocmd BufWrite *.js :call DeleteTrailingWS()
+
+   " PLUGIN: vim-coffee-script
+   " =========================
+   autocmd QuickFixCmdPost * nested cwindow | redraw!
+   autocmd BufWritePost *.coffee silent make!
+   autocmd BufNewFile,BufReadPost *.coffee setl foldmethod=indent nofoldenable
+   autocmd BufNewFile,BufReadPost *.coffee setl shiftwidth=2 expandtab
+
+augroup END
+
+" On ,m, save all and run spec folder with jasmine
+map <leader>m :wa \|! jasmine-node spec --coffee --noColor <CR>
 
 " Javascript
 au FileType javascript call JavaScriptFold()
@@ -75,13 +92,6 @@ nmap <Leader>a= :Tabularize /=<CR>
 vmap <Leader>a= :Tabularize /=<CR>
 nmap <Leader>a: :Tabularize /:\zs<CR>
 vmap <Leader>a: :Tabularize /:\zs<CR>
-
-" PLUGIN: vim-coffee-script
-" =========================
-autocmd QuickFixCmdPost * nested cwindow | redraw!
-autocmd BufWritePost *.coffee silent make!
-autocmd BufNewFile,BufReadPost *.coffee setl foldmethod=indent nofoldenable
-autocmd BufNewFile,BufReadPost *.coffee setl shiftwidth=2 expandtab
 
 " PLUGIN: vim-javascript
 " ======================

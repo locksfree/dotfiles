@@ -1,3 +1,6 @@
+" == GIT ==
+" =========
+
 Plugin 'mattn/gist-vim'                         " Post current buffer as a gist :Gist -p or :Gist -a
 Plugin 'gregsexton/gitv'                        " Gitk for vim. Extension to fugitive
 Plugin 'tpope/vim-fugitive'                     " Git integration

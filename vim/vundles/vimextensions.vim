@@ -1,3 +1,6 @@
+" == VIM EXTENSIONS ==
+" ====================
+
 Plugin 'fholgado/minibufexpl.vim'               " Mini buffer explorer
 Plugin 'yegappan/mru'                           " Most recent used :MRU
 Plugin 'scrooloose/nerdtree'                    " Nerd Tree

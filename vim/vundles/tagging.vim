@@ -1,3 +1,6 @@
+" == TAGGING ==
+" =============
+
 Plugin 'a.vim'                                  " Quick switch from .c -> .h etc. :A
 Plugin 'kien/ctrlp.vim'                         " Ctrl+P
 Plugin 'majutsushi/tagbar'                      " Outline of file based on tags
