@@ -2,3 +2,10 @@ Plugin 'Raimondi/delimitMate'                   " Autocompletion for brackets, p
 Plugin 'ervandew/snipmate.vim'                  " Snippet manager
 Plugin 'ervandew/supertab'                      " Supertab - autocompletion
 
+set omnifunc=syntaxcomplete#Complete
+
+" PLUGIN: SuperTab
+" ================
+let g:SuperTabDefaultCompletionType = "context"
+
+

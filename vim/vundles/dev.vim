@@ -22,4 +22,69 @@ Plugin 'mustache/vim-mustache-handlebars'       " Support for Handlebars
 Plugin 'wavded/vim-stylus'                      " Syntax highlighting for stylus
 Plugin 'cespare/vim-toml'                       " Syntax highlighting for Toml configuration file format
 
+" JS & Coffee script settings
+au BufNewFile,BufReadPost *.js setl shiftwidth=3 tabstop=3 expandtab
+" Coffee-script: Recompile on save and show errors
+au BufNewFile,BufReadPost *.js setl shiftwidth=3 expandtab
+" On ,m, save all and run spec folder with jasmine
+map <leader>m :wa \|! jasmine-node spec --coffee --noColor <CR>
+
+"Delete trailing white space
+func! DeleteTrailingWS()
+  exe "normal mz"
+  %s/\s\+$//ge
+  exe "normal `z"
+endfunc
+autocmd BufWrite *.py :call DeleteTrailingWS()
+autocmd BufWrite *.js :call DeleteTrailingWS()
+
+" Javascript
+au FileType javascript call JavaScriptFold()
+au FileType javascript setl fen
+au FileType javascript setl nocindent
+
+" Run vow with ,tw or ,ta
+map <leader>tw :w!<cr>:!vows<cr>
+map <leader>ta :w!<cr>:!vows --spec<cr>
+
+function! JavaScriptFold()
+   setl foldmethod=syntax
+   setl foldlevelstart=1
+   syn region foldBraces start=/{/ end=/}/ transparent fold keepend extend
+
+   function! FoldText()
+      return substitute(getline(v:foldstart), '{.*', '{...}', '')
+   endfunction
+   setl foldtext=FoldText()
+endfunction
+
+" PLUGIN: emmet
+" =============
+let g:user_emmet_install_global = 0
+autocmd FileType html,css EmmetInstall
+
+" PLUGIN: syntastic
+" =================
+let g:syntastic_cpp_check_header = 1
+let g:syntastic_cpp_auto_refresh_includes = 1
+let g:syntastic_cpp_compiler_options = '-std=c++0x'
+
+" PLUGIN: Tabularize
+" ==================
+nmap <Leader>a= :Tabularize /=<CR>
+vmap <Leader>a= :Tabularize /=<CR>
+nmap <Leader>a: :Tabularize /:\zs<CR>
+vmap <Leader>a: :Tabularize /:\zs<CR>
+
+" PLUGIN: vim-coffee-script
+" =========================
+autocmd QuickFixCmdPost * nested cwindow | redraw!
+autocmd BufWritePost *.coffee silent make!
+autocmd BufNewFile,BufReadPost *.coffee setl foldmethod=indent nofoldenable
+autocmd BufNewFile,BufReadPost *.coffee setl shiftwidth=2 expandtab
+
+" PLUGIN: vim-javascript
+" ======================
+let g:javascript_conceal = 1 " Replace function by f, etc
+
 
