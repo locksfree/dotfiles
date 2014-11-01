@@ -98,15 +98,17 @@ endif
 " END OF VUNDLE CONFIGURATION
 " ===========================
 
-" Automatically save and reload views {{{1
-au BufWritePost,BufLeave,WinLeave ?* mkview
-au BufWinEnter ?* silent loadview
-
+" Autocommands {{{1
 "" Set the default font
 set guifont=Source\ Code\ Pro\ Medium\ 12
 
 augroup vimconfig
    autocmd!
+
+   " Automatically save and reload views
+   au BufWritePost,BufLeave,WinLeave ?* mkview
+   au BufWinEnter ?* silent loadview
+
    " For all text files set 'textwidth' to 100 characters.
    autocmd FileType text setlocal textwidth=100
 
@@ -122,7 +124,7 @@ augroup vimconfig
 
    " Auto source vimsource on changes
    autocmd! bufwritepost .vimrc source $MYVIMRC 
-   autocmd! bufwritepost vim.config source $MYVIMRC
+   autocmd! bufwritepost vimrc.vim source $MYVIMRC
 augroup END
 
 syntax enable      " enable syntax highlighting
@@ -179,6 +181,8 @@ if !has("gui_running")
 endif
 set background=dark
 colorscheme solarized
+
+" Source personnal and local files {{{1
 
 " Source a personnal configuration file if present
 if filereadable(expand('~/.vimrcr.perso'))
