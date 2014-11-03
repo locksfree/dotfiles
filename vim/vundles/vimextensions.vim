@@ -37,4 +37,3 @@ let g:tlTokenList = ['TODO', 'FIXME', 'REVIEW', 'XXX']
 " ========================
 map <silent> <leader>l :CtrlPCmdPalette<CR>
 
-

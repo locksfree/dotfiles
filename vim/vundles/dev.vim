@@ -50,15 +50,16 @@ augroup devgrp
    autocmd BufNewFile,BufReadPost *.coffee setl foldmethod=indent nofoldenable
    autocmd BufNewFile,BufReadPost *.coffee setl shiftwidth=2 expandtab
 
+   au FileType cpp,hpp setl foldmethod=syntax foldcolumn=3 
+
+   " Javascript
+   au FileType javascript call JavaScriptFold()
+   au FileType javascript setl fen
+   au FileType javascript setl nocindent
 augroup END
 
 " On ,m, save all and run spec folder with jasmine
 map <leader>m :wa \|! jasmine-node spec --coffee --noColor <CR>
-
-" Javascript
-au FileType javascript call JavaScriptFold()
-au FileType javascript setl fen
-au FileType javascript setl nocindent
 
 " Run vow with ,tw or ,ta
 map <leader>tw :w!<cr>:!vows<cr>
@@ -97,4 +98,4 @@ vmap <Leader>a: :Tabularize /:\zs<CR>
 " ======================
 let g:javascript_conceal = 1 " Replace function by f, etc
 
-
+iabbrev fixme // FIXME: 

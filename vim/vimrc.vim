@@ -2,6 +2,7 @@
 " General options {{{1
 set nocompatible        " Improved
 set foldcolumn=3
+set foldmethod=syntax
 set ruler
 set number
 set autoindent          " always set autoindenting on
@@ -19,7 +20,7 @@ set backspace=indent,eol,start   " allow backspacing over everything in insert m
 set pastetoggle=<F2>
 set showcmd             " display incomplete commands
 set cf                  " Enable error files & error jumping.
-set clipboard+=unnamed  " Yanks go on clipboard instead.
+set clipboard+=unnamedplus " Yanks go on the clipboard
 set timeoutlen=250      " Time to wait after ESC (default causes an annoying delay)
 
 " Show a unicode end of line symbol at end of line and trailing space as ~
@@ -138,6 +139,7 @@ augroup vimconfig
 augroup END
 
 syntax enable      " enable syntax highlighting
+let g:load_doxygen_syntax=1
 
 " CTRL-U in insert mode deletes a lot.  Use CTRL-G u to first break undo,
 " so that you can undo CTRL-U after inserting a line break.
@@ -189,10 +191,17 @@ endif
 set background=dark
 colorscheme solarized
 
+if !has("gui_running")
+   if &term =~ '256color'
+      " Disable background color erase
+      set t_ut=
+   endif
+endif
+
 " Source personnal and local files {{{1
 
 " Source a personnal configuration file if present
-if filereadable(expand('~/.vimrcr.perso'))
+if filereadable(expand('~/.vimrc.perso'))
    source ~/.vimrc.perso
 endif
 
