@@ -15,6 +15,7 @@ Plugin 'grep.vim'                               " :Grep for vim
 if has('python') && has('gui_running')
    Plugin 'mbadran/headlights'                  " List all currently loaded vundles
 endif
+Plugin 'powerline/fonts'
 
 " PLUGIN: Minibuffer Explorer Settings
 " ====================================

@@ -110,7 +110,7 @@ endif
 
 " Autocommands {{{1
 "" Set the default font
-set guifont=Source\ Code\ Pro\ for\ Powerline\ Medium\ 12
+"set guifont=Source\ Code\ Pro\ for\ Powerline\ Medium\ 12
 let g:airline_powerline_fonts = 1
 
 augroup vimconfig
