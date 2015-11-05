@@ -1,0 +1,31 @@
+[alias]
+   g = grep --break --heading -line-number
+   r = !git ls-files -zd | xargs -0 git rm
+   br = branch
+   co = checkout
+   mg = merge --no-ff
+   lg = log --oneline --graph --topo-order
+   st = status -s
+   pretty = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset %an' --date=relative
+   send = !sh -c 'git push -u origin `git symbolic-ref -q HEAD | sed 's:refs/heads/::'` && git rev-parse head'
+   show-notes = log -1 --show-notes=*
+   resend = !sh -c 'git stash && git pull --rebase && git send && git stash apply && git rev-parse head'
+[color]
+   ui = true
+[core]
+   editor = vim
+   whitespace = trailing-space,space-before-tab,indent-with-non-tab
+[gc]
+   auto = 0
+[grep]
+   lineNumber = true
+   extendedRegexp = true
+[help]
+   autocorrect = 1
+[notes]
+   regwriteRef = refs/notes/signoff
+[rerere]
+   enabled = 1
+   autoupdate = 1
+[difftool]
+   prompt = false
