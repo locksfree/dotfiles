@@ -2,7 +2,7 @@
 " General options {{{1
 set nocompatible        " Improved
 set foldcolumn=3
-set foldmethod=syntax
+set foldmethod=manual
 set ruler
 set number
 set autoindent          " always set autoindenting on
@@ -176,6 +176,9 @@ vnoremap <F9> zf
 nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<CR>
 vnoremap <Space> zf
 
+inoremap <C-s> <esc>:w<CR>
+nnoremap <C-s> :w<CR>
+
 let &errorformat="%f:%l:%c: %t%*[^:]:%m,%f:%l: %t%*[^:]:%m," . &errorformat 
 
 " Quick docco-husky
@@ -209,3 +212,5 @@ endif
 if filereadable(expand('./.vimrc.local'))
    source ./.vimrc.local
 endif
+set foldmethod=manual
+
