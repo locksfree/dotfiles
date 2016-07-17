@@ -234,8 +234,6 @@ function! SetArrowKeysAsTextShifters()
     imap <silent> <Right> <C-T>
     inoremap <silent> <Up> <Esc>:call DelEmptyLineAbove()<CR>a
     inoremap <silent> <Down> <Esc>:call AddEmptyLineAbove()<CR>a
-    inoremap <silent> <C-Up> <Esc>:call DelEmptyLineBelow()<CR>a
-    inoremap <silent> <C-Down> <Esc>:call AddEmptyLineBelow()<CR>a
 
     " disable modified versions we are not using
     nnoremap  <S-Up>     <NOP>

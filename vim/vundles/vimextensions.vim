@@ -32,7 +32,6 @@ let MRU_Max_Entries = 1000
 let g:unite_source_history_yank_enable = 1
 nnoremap <C-p> :Unite -no-split -buffer-name=files -start-insert file_rec/async:!<cr>
 nnoremap <space>m :Unite -no-split -buffer-name=mru -start-insert -quick-match file_mru<cr>
-nnoremap <space>o :Unite -no-split -buffer-name=outline -start-insert outline<cr>
 nnoremap <space>/ :Unite grep:.<cr>
 nnoremap <space>y :Unite history/yank<cr>
 nnoremap <space>b :Unite -quick-match buffer<cr>
