@@ -10,6 +10,7 @@ Plugin 'vimwiki'                                " Personnal wiki stored in ~/vim
 Plugin 'shougo/vinarise.vim'                    " Hex edition
 Plugin 'shougo/unite.vim'                       " Powerfull plugin to replace others
 Plugin 'shougo/neomru.vim'                      " MRU for unite
+Plugin 'shougo/vimproc.vim'                     " Grep for unite
 Plugin 'tpope/vim-repeat'                       " Make . support some plugin map
 Plugin 'tpope/vim-abolish'                      " Abbrevs & replace short hand
 if has('python') && has('gui_running')
