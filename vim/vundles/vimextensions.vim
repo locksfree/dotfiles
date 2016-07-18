@@ -11,6 +11,7 @@ Plugin 'shougo/vinarise.vim'                    " Hex edition
 Plugin 'shougo/unite.vim'                       " Powerfull plugin to replace others
 Plugin 'shougo/neomru.vim'                      " MRU for unite
 Plugin 'shougo/vimproc.vim'                     " Grep for unite
+Plugin 'shougo/unite-outline'                   " outline for unite
 Plugin 'tpope/vim-repeat'                       " Make . support some plugin map
 Plugin 'tpope/vim-abolish'                      " Abbrevs & replace short hand
 if has('python') && has('gui_running')
@@ -32,6 +33,7 @@ let MRU_Max_Entries = 1000
 let g:unite_source_history_yank_enable = 1
 nnoremap <C-p> :Unite -no-split -buffer-name=files -start-insert file_rec/async:!<cr>
 nnoremap <space>m :Unite -no-split -buffer-name=mru -start-insert -quick-match file_mru<cr>
+nnoremap <space>o :Unite -buffer-name=outline outline<cr>
 nnoremap <space>/ :Unite grep:.<cr>
 nnoremap <space>y :Unite history/yank<cr>
 nnoremap <space>b :Unite -quick-match buffer<cr>
